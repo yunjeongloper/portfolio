@@ -1,0 +1,116 @@
+<html>
+<head>
+<meta name=viewport content="width=device-width, initial-scale=1, user-scalable=0">
+<!-- meta viewport가 없으면 모바일로 볼 때 문제가 생긴다. -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css/core.css">
+<link rel="stylesheet" href="css/core2.css" media="only screen and (min-width:800px)">
+<!-- 반응형 웹을 구현하기 위해 -->
+<title>THE LETTER</title>
+</head>
+<body>	
+<div class="page-hdr" style="cursor:pointer;"onclick="home()">THE LETTER</div>
+<div class="section phor-24 bg-color">
+	<span class="menubtn" onclick="openNav()">&#9776;</span>
+	<div id="mySidenav" class="sidenav">
+	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	  <a href="about.html">About</a>
+	  <div class="section mbot-30"></div>
+	  <a id="books" href="list.jsp">Books</a>
+	  <a id="movies" href="list1.jsp">Movies</a>
+	  <a id="exhibits" href="list2.jsp">Exhibitions</a>
+	  <a id="loginbtn" class="login" onclick="login()">login</a>
+	  <a id="logoutbtn" class="login" onclick="logout()">logout</a>
+	</div>
+	<input class="texrbox mtop-30" id="uid" type="text" placeholder="ID">
+	<input class="texrbox mtop-20" id="upass" type="password" placeholder="PASSWORD">
+	<div class="form-submit mtop-30" onclick="login()">✔</div>
+	<div class="section mbot-30"></div>
+	<div class="font-style" onclick="signup()"><b>SIGNUP→</b></div>
+<div class="page-footer">@2017 삼육대학교 컴퓨터학부 박노빈 장윤정</div> <!-- 부모가 body -->
+</div>
+</body>
+</html>
+
+<script src="js/jquery-1.12.0.min.js"></script>
+<script src="js/core.js"></script>
+<script type="text/javascript">
+$/*jquery*/(document).ready(function() {
+	AJAX.call("jsp/session.jsp", null, function (data) {
+		var id = data.trim();
+		if (id == "NA") {
+			$("#logoutbtn").hide();			
+			$("#books").hide();		
+			$("#movies").hide();		
+			$("#exhibits").hide();
+		}
+		else {
+			start(id);
+		}
+	});
+});
+function home(){
+	window.location.href="main.html";
+}
+
+function signup() {
+	window.location.href="signup.html";
+}
+
+function login() {
+	if(checkInput() == false) 
+		return;
+	//signup logic.
+	//var elem = document.getElementById("uid")
+	var params = "uid=" + $("#uid").val() + //#uid는 input id=uid와 같다
+				//ex) uid= 여기서 =이 없다면 uid111 & uname=kim & upass=asdf exception 잘 기억
+				"&upass=" + $("#upass").val();
+	AJAX.call("jsp/login.jsp", params, function(data) {
+		var code = data.trim(); //trim 양 옆을 깔끔하게 짤라줌.
+		if(code == "NA") {
+			alert("아이디가 존재하지 않습니다.");
+		}
+		else if(code == "PS") {
+			alert("패스워드가 일치하지 않습니다.");
+		}
+		else if (code == "OK") {
+			window.location.href = "main.html";
+		}
+	})
+}
+
+function checkInput() {
+	var uid = $("#uid").val();
+	if(uid=="") {
+		alert("아이디를 입력하세요.");
+		return false;
+	}
+
+	if (isNaN(uid) == true) {
+		alert("아이디에는 숫자만 입력해주세요.");
+		return false;
+	}
+	
+	var upass = $("#upass").val();
+	if(upass=="") {
+		alert("패스워드를 입력하세요.");
+		return false;
+	}
+	
+	return true;
+}
+
+
+/* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
+function openNav() {
+    document.getElementById("mySidenav").style.width = "150px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+}
+
+</script>

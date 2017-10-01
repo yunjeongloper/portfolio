@@ -1,0 +1,408 @@
+@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
+@import url('http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css');
+@import url('http://fonts.googleapis.com/earlyaccess/hanna.css');
+@import url('http://fonts.googleapis.com/earlyaccess/jejumyeongjo.css');
+@import url('http://fonts.googleapis.com/earlyaccess/jejugothic.css');
+
+body {
+	font-family:'Nanum Gothic',serif;
+	margin: 0;
+	font-size:0.9em;
+}
+
+.background {
+	position:relative;
+	width:100%; height:100%;
+	background-position:50%;
+	background-size:cover; /*자동으로 배경이 따라 움직이게 함*/
+	background-repeat:no-repeat;
+}
+.splash{
+	position:relative;
+	width:100%; height:100%;
+	background-position:50%;
+	background-image:url("images/beforesun4.jpg");
+	background-size:cover; /*자동으로 배경이 따라 움직이게 함*/
+	background-repeat:no-repeat;
+	
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.background .darker{
+	position:absoulte;
+	left:0; top:0;
+	width:100%; height:100%;
+	opacity:0.3;
+	background-color:black;
+}
+.background .logo{
+	position:absolute;
+	width:70%; top:42%;
+	margin:0 15%;
+	font-family: "Times New Roman", Times, serif;
+	text-align:center;
+	font-size:3em;
+	color:white;
+}
+.background .slogo{
+	position:absolute;
+	width:70%; top:50%;
+	margin:0 15%;
+	font-family: "Courier New", Courier, monospace;
+	text-align:center;
+	font-size:1.5em;
+	color:white;
+}
+.page-hdr{
+	float: left;
+	width: 100%;
+	padding: 15px;
+	box-sizing: border-box;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 1.9em;
+	font-weight: bold;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+/* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1;  /*Stay on top */
+    top: 0;
+    right: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding:8px 8px 8px 25px;
+    text-decoration: none;
+	font-family: "Times New Roman", Times, serif;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right:100px;
+    font-size: 36px;
+    margin-left: 10px;
+}
+.sidenav .login {
+    position: absolute;
+    top:5px;
+    right:15px;
+    font-size: 25px;
+    margin-left: 10px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 50px;}
+    .sidenav a {font-size: 18px;}
+    
+	.background .logo{font-size:2em;}
+	.background .slogo{font-size:.8em;}
+}
+.menubtn {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 25px;
+    margin-left: 50px;
+	font-weight: bold;
+}
+
+.mtop-10 {margin-top: 10px;}
+.mtop-20 {margin-top: 20px;}
+.mtop-30 {margin-top: 30px;}
+
+.mbot-10 {margin-bottom: 10px;}
+.mbot-20 {margin-bottom: 20px;}
+.mbot-30 {margin-bottom: 30px;}
+
+.bg-eee {background-color: #eee;}
+
+.section{
+	float: left;
+	width: 100%;
+}
+.section.phor-12 { padding: 0 12px; box-sizing: border-box; }
+.section.phor-16 { padding: 0 16px; box-sizing: border-box; }
+
+.section.phor-24{
+	/* width: calc(100%-48px); */
+	padding: 0 24px;
+	box-sizing: border-box; 
+}
+.grid-50 { 
+	float: left;
+	width: 50%;
+	box-sizing : border-box;	
+	padding: 2px;
+}
+.page-footer{
+	position: absolute;
+	width: 100%;
+	bottom: 20px;
+	font-size: 0.9em;
+	color:#999;
+	text-align: center;
+}
+
+.form-text{
+	float: left;
+	width: 100%;
+	padding: 0 15px;
+	line-height: 35px;
+	background-color: white;
+	font-size: 1em;
+	border: 1px solid #ddd;
+	outline: none;
+}
+.form-text:focus{
+	border: 1px solid #F2CB61;
+}
+
+.form-submit{
+	float: left;
+	width: 80%;
+	margin: 10px 10%;
+	padding: 10px 0;
+	text-align: center;
+	background-color : #5D5D5D;
+	color: white;
+	border-radius: 3px;
+	cursor: pointer;
+}
+.form-write{
+	float: left;
+	width: 30%;
+	margin: 5px 10%;
+	padding: 8px 0;
+	text-align: center;
+	background-color : #5D5D5D;
+	color: white;
+	border-radius: 3px;
+	cursor: pointer;
+}
+.form-submit.mtop-30 {
+	margin-top:30px;
+}
+.form-btn{
+	text-align: center;
+	float: left;
+	padding: 8px 25px;
+	background-color: white;
+	color: #24c;
+	border: 2px solid #24c;
+	border-radius: 8px;
+	cursor:pointer;
+}
+.font-style {
+	color:#353535;
+	font-weight:500;
+	font-size:1.0em;
+	text-align:center;
+	cursor:pointer;
+	}
+
+.font-style3 {
+	text-align:right;
+	font-weight:100;
+	font-color:#5D5D5D;
+	font-size:0.8em;
+	margin-top: 10px;
+}
+.texrbox {
+	
+	float: left;
+	width: 100%;
+	padding: 0 15px;
+	font-size: 1em;
+    height: 40;
+    background: #f2f2f2;
+    color: #333;
+    border: none;
+    border-bottom: 1px solid #999;
+    border-radius: 1px;
+    font-family: 'josefin_sansregular', sans-serif;
+    outline: none;
+    -webkit-transition: all 250ms ease-in;
+    -moz-transition: all 250ms ease-in;
+    -ms-transition: all 250ms ease-in;
+    -o-transition: all 250ms ease-in;
+    transition: all 250ms ease-in;
+}
+.texrbox:focus {
+    background: #f9f9f9;
+    border-bottom: 1px solid #333;
+}
+
+.ctxmnupen {
+	background-image: url("images/pen.png");
+}
+
+/* Images --------------------------------------------------------- */
+/* source: http://nicolasgallagher.com/flexible-css-cover-images/  */
+.flex-embed {
+	position: relative;
+	overflow: hidden;
+	background-position: 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.flex-embed:before {
+	content: "";
+	display: block;
+	width: 100%;
+	padding-bottom: 75%;
+}
+.flex-embed.r4by1:before {
+	padding-bottom: 22%;
+}
+.flex-embed.r3by1:before {
+	padding-bottom: 37%;
+	/* padding-bottom: 33.33333%; */  
+}
+.flex-embed.r2by1:before {
+	padding-bottom: 50%;
+}
+.flex-embed.r16by9:before {
+	padding-bottom: 56.25%;
+}
+.flex-embed.r4by3:before {
+	padding-bottom: 65%;
+}
+
+.contents{
+	float: left;
+	width: 100%;
+	padding: 15px;
+	box-sizing: border-box;
+	font-size: 1.1em;
+	text-align: left;
+}
+.contents .text{
+	font-family:'Jeju Myeongjo',serif;
+   	letter-spacing: 3px;  
+	color:#5D5D5D;
+	text-align:center;
+	width: 100%;
+	font-size: 1em;
+}
+.contents .text a:hover, .offcanvas a:focus{
+    color: #191919;
+	font-weight: bold;
+}
+.contents .text .author{
+	font-family:'Jeju Myeongjo',serif;
+	color:#5D5D5D;
+	text-align:right;
+	width: 100%;
+	font-size: .8em;
+	font-weight: bold;
+}
+.contents .text .footer{
+	margin-top:30;
+	font-family:'Nanum Gothic',serif;
+	color:black;
+	text-align:right;
+	width: 100%;
+	font-size: .7em;
+}
+.contents .text .fin{
+	font-family:'Nanum Gothic';
+	color:black;
+	text-align:left;
+	width: 100%;
+	font-size: .9em;
+}
+.mainimage {
+    position: relative; 
+	max-width: 100%; 
+	height: auto;
+}
+h2 { 
+   position: absolute; 
+   top: 250; 
+   left: 0; 
+   width: 100%; 
+}
+h2 span { 
+   color: white; 
+   font: bold 20px/30px Nanum Gothic, Sans-Serif; */
+   letter-spacing: -1px;  
+   background: rgb(0, 0, 0); /* fallback color */
+   background: rgba(0, 0, 0, 0.7);
+   padding: 8px; 
+}
+h2 span.spacer {
+   padding:0 5px;
+}
+
+.board{
+   	letter-spacing: 3px;  
+	color:#5D5D5D;
+	text-align:center;
+	width: 100%;
+	font-size: 1em;
+}
+
+.table {
+    border-collapse: separate;
+    border-spacing: 0;
+    text-align: center;
+    line-height: 1.5;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+}
+.table th {
+    text-align: center;
+    width: 100px;
+    padding: 10px;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #fff;
+    border-left: 1px solid #fff;
+    background: #eee;
+}
+.table td {
+    width: 350px;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+.viewtxt {
+    width: 350px;
+    overflow:hidden;
+	word-break:break-all;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}

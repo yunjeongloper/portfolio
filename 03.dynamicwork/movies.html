@@ -1,0 +1,145 @@
+<html>
+
+<head>
+<meta name=viewport content="width=device-width, initial-scale=1, user-scalable=0"> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css/core.css">
+<link rel="stylesheet" href="css/core2.css" media="only screen and (min-width:800px)">
+
+<title>THE LETTER</title>
+<style>
+
+.flex-container {
+    display: -webkit-flex;
+    display: flex;  
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    text-align: center;
+}
+.flex-container > * {
+    padding: 50px;
+    -webkit-flex: 1 100%;
+    flex: 1 100%;
+}
+.article {
+    text-align: left;
+}
+header {background:url(images/279H.jpg) no-repeat center center fixed; color:white;}
+footer {background: #aaa;color:white;}
+.nav {background:#eee;}
+.nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+.nav ul a {
+    text-decoration: none;
+    color:black;
+}
+@media all and (min-width: 768px) {
+    .nav {text-align:left;-webkit-flex: 1 auto;flex:0.5 auto;-webkit-order:1;order:1;}
+    .article {-webkit-flex:5 0px;flex:5 0px;-webkit-order:2;order:2;}
+    footer {-webkit-order:3;order:3;}
+}
+  a:link{color:white; text-decoration:none;}
+  a:visited{color:white; text-decoration:none;}
+  a:hover{color:white; text-decoration:none;}
+  a:active{color:white; text-decoration:none;}
+
+  .black a:link{color:black; text-decoration:none;}
+  .black a:visited{color:black; text-decoration:none;}
+  .black a:hover{color:black; text-decoration:none;}
+  .black a:active{color:black; text-decoration:none;}
+
+  .list{margin-top:10px; margin-right:20px; margin-left:20px; margin-bottom:10px;
+        padding-top:10; padding-right:20; padding-left:20pt; padding-bottom:10px;}
+  td {font-size:12pt; color:black;}
+</style>
+</head>
+
+<body>
+	<div class="page-hdr" style="cursor:pointer;" onclick="home()">THE LETTER</div>
+	<span class="menubtn" onclick="openNav()">&#9776;</span>
+	<div id="mySidenav" class="sidenav">
+	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	  <a href="about.html">About</a>
+	  <div class="section mbot-30"></div>
+	  <a href="books.html">Books</a>
+	  <a href="movies.html">Movies</a>
+	  <a href="exhibitions.html">Exhibitions</a>
+	  <a id="loginbtn" class="login" onclick="login()">login</a>
+	  <a id="logoutbtn" class="login" onclick="logout()">logout</a>
+	</div>
+	
+
+	<article class="article">
+	    <table width="100%" cellpadding="5" cellspacing="5" bgcolor="#EAEAEA">
+	    <tr>
+	      <th width="10%" align="center">번호</th><th width="40%" align="center">포스터</th><th width="50%" align="center">이름</th>
+	    <tr>
+	      <td align="center" bgcolor="white">1</td>
+	      <td align="center" class="black"><a href="#"><img src="images/쉰들러.jpg" width="150" height="200" border="0" alt=""></a></td>
+	      <td class="black"><a href="#">쉰들러 리스트<br>(Schindeler's List, 1993)</a></td>
+	    </tr>
+	    <tr>
+	      <td align="center" bgcolor="white">2</td>
+	      <td align="center" class="black"><a href="#"><img src="images/헤드윅.jpg" width="150" height="200" border="0" alt=""></a></td>
+	      <td class="black"><a href="#">헤드윅<br>(Hedwig and the Angry Inch,2000)</a></td>
+	    </tr>
+	    <tr>
+	      <td align="center" bgcolor="white">3</td>
+	      <td align="center" class="black"><a href="#"><img src="images/모아나.jpg" width="150" height="200" border="0" alt=""></a></td>
+	      <td class="black"><a href="#">모아나(Moana, 2016)</a></td>
+	    </tr>
+	    </table>
+	</article>
+	
+</body>
+</html>
+<script src="js/jquery-1.12.0.min.js"></script>
+<script src="js/core.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	AJAX.call("jsp/session.jsp", null, function (data) {
+		var id = data.trim();
+		if (id == "NA") {
+			$("#logoutbtn").hide();
+		}
+		else {
+			start(id);
+		}
+	});
+});
+
+function logout() {
+	if(confirm("로그아웃 하시겠습니까??") == true) {
+		AJAX.call("jsp/logout.jsp", null, function (data) {
+			window.location.href = "main.html";
+		});
+	}
+}
+
+function start(id) {
+	$("#loginbtn").hide();
+	$("#logoutbtn").show();
+}
+
+function home(){
+	window.location.href="main.html";
+}
+
+function login(){
+	window.location.href="log_in.html";
+}
+
+/* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
+function openNav() {
+    document.getElementById("mySidenav").style.width = "150px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+}
+</script>

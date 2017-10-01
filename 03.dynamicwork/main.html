@@ -1,0 +1,85 @@
+<html>
+
+<head>
+<meta name=viewport content="width=device-width, initial-scale=1, user-scalable=0"> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css/core.css">
+<link rel="stylesheet" href="css/core2.css" media="only screen and (min-width:800px)">
+
+<title>THE LETTER</title>
+</head>
+
+<body>
+	<div class="page-hdr" style="cursor:pointer;" onclick="home()">THE LETTER</div>
+	<span class="menubtn" onclick="openNav()">&#9776;</span>
+	<div id="mySidenav" class="sidenav">
+	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	  <a href="about.html">About</a>
+	  <div class="section mbot-30"></div>
+	  <a id="books" href="list.jsp">Books</a>
+	  <a id="movies" href="list1.jsp">Movies</a>
+	  <a id="exhibits" href="list2.jsp">Exhibitions</a>
+	  <a id="loginbtn" class="login" onclick="login()">login</a>
+	  <a id="logoutbtn" class="login" onclick="logout()">logout</a>
+	</div>
+	<div class="contents">
+		<img src="images/window.jpg" class="mainimage" alt=""/>
+        <h2><span>당신에게 도착한,
+        <span class='spacer'></span><br />
+        <span class='spacer'></span>
+      	괜찮은 이야기들<br /></span></h2>
+	</div>
+	<div class="page-footer">@2017 삼육대학교 컴퓨터학부 박노빈 장윤정</div>
+</body>
+</html>
+<script src="js/jquery-1.12.0.min.js"></script>
+<script src="js/core.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	AJAX.call("jsp/session.jsp", null, function (data) {
+		var id = data.trim();
+		if (id == "NA") {
+			$("#logoutbtn").hide();			
+			$("#books").hide();		
+			$("#movies").hide();		
+			$("#exhibits").hide();
+		}
+		else {
+			start(id);
+		}
+	});
+});
+
+function logout() {
+	if(confirm("로그아웃 하시겠습니까??") == true) {
+		AJAX.call("jsp/logout.jsp", null, function (data) {
+			window.location.href = "main.html";
+		});
+	}
+}
+
+function start(id) {
+	$("#loginbtn").hide();
+	$("#logoutbtn").show();
+}
+
+function home(){
+	window.location.href="main.html";
+}
+
+function login(){
+	window.location.href="log_in.html";
+}
+
+/* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
+function openNav() {
+    document.getElementById("mySidenav").style.width = "150px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+}
+</script>

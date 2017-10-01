@@ -1,0 +1,141 @@
+<html>
+<head>
+<meta name=viewport content="width=device-width, initial-scale=1, user-scalable=0">
+<!-- meta viewport가 없으면 모바일로 볼 때 문제가 생긴다. -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css/core.css">
+<link rel="stylesheet" href="css/core2.css" media="only screen and (min-width:800px)">
+<!-- 반응형 웹을 구현하기 위해 -->
+<title>THE LETTER</title>
+</head>
+<body>
+<div class="page-hdr" style="cursor:pointer;"onclick="home()">THE LETTER</div>
+<div class="section phor-24 bg-color">
+<!-- from 형식으로 전달하기위해 name이 필요하다  name=request.getParameter (일치해야함) -->
+	<span class="menubtn" onclick="openNav()">&#9776;</span>
+	<div id="mySidenav" class="sidenav">
+	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	  <a href="about.html">About</a>
+	  <div class="section mbot-30"></div>
+	  <a id="books" href="list.jsp">Books</a>
+	  <a id="movies" href="list1.jsp">Movies</a>
+	  <a id="exhibits" href="list2.jsp">Exhibitions</a>
+	  <a id="loginbtn" class="login" onclick="login()">login</a>
+	  <a id="logoutbtn" class="login" onclick="logout()">logout</a>
+	</div>
+	<input id="uid" class="texrbox mtop-30" type="text" placeholder="ID"/>
+	<div class="font-style3">* 휴대폰번호를 입력해주세요</div>
+	<input id="uname" class="texrbox mtop-10" type="text" placeholder="NAME"/>
+	<input id="upass" class="texrbox mtop-20" type="password" placeholder="PASSWORD"/>
+	<input id="upass2" class="texrbox mtop-20" type="password" placeholder="PASSWORD CHECK"/>
+	<div class="form-submit mtop-30" onclick="signup()">가입하기</div>
+	<div class="section mbot-30"></div>
+</div>
+<div class="page-footer">@2017 삼육대학교 컴퓨터학부 박노빈 장윤정</div> <!-- 부모가 body -->
+
+</body>
+</html>
+
+<script src="js/jquery-1.12.0.min.js"></script>
+<script src="js/core.js"></script>
+<script type="text/javascript">
+$/*jquery*/(document).ready(function() {
+	
+});
+function home(){
+	window.location.href="main.html";
+}
+
+function signup() {
+	if(checkInput() == false) 
+		return;
+	//signup logic.
+	//var elem = document.getElementById("uid")
+	var params = "uid=" + $("#uid").val() + //#uid는 input id=uid와 같다
+				//ex) uid= 여기서 =이 없다면 uid111 & uname=kim & upass=asdf exception 잘 기억
+				"&uname=" + $("#uname").val() +
+				"&upass=" + $("#upass").val();
+	AJAX.call("jsp/signup.jsp", params, function(data) {
+		var code = data.trim(); //trim 양 옆을 깔끔하게 짤라줌.
+		if(code == "EX") {
+			alert("아이디가 존재합니다.");
+		}
+		else {
+			alert("회원 가입이 완료 되었습니다.");
+			window.location.href="log_in.html";
+		}
+	})
+}
+
+/*패스워드 일치 확인 함수*/
+function checkInput() {
+	var uid = $("#uid").val();
+	if(uid=="") {
+		alert("아이디를 입력하세요.");
+		return false;
+	}
+	if (isNaN(uid) == true) {
+		alert("아이디에는 숫자만 입력해주세요.");
+		return false;
+	}
+	var uname = $("#uname").val();
+	if(uname=="") {
+		alert("이름을 입력하세요.");
+		return false;
+	}
+	var upass = $("#upass").val();
+	if(upass=="") {
+		alert("패스워드를 입력하세요.");
+		return false;
+	}
+	var upass2 = $("#upass2").val();
+	if(upass!=upass2) {
+		alert("패스워드가 다릅니다.");
+		return false;
+	}
+	return true;
+}
+$(document).ready(function() {
+	AJAX.call("jsp/session.jsp", null, function (data) {
+		var id = data.trim();
+		if (id == "NA") {
+			$("#logoutbtn").hide();			
+			$("#books").hide();		
+			$("#movies").hide();		
+			$("#exhibits").hide();
+		}
+		else {
+			start(id);
+		}
+	});
+});
+
+function logout() {
+	if(confirm("로그아웃 하시겠습니까??") == true) {
+		AJAX.call("jsp/logout.jsp", null, function (data) {
+			window.location.href = "main.html";
+		});
+	}
+}
+
+function start(id) {
+	$("#loginbtn").hide();
+	$("#logoutbtn").show();
+}
+
+function login(){
+	window.location.href="log_in.html";
+}
+
+/* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
+function openNav() {
+    document.getElementById("mySidenav").style.width = "150px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+}
+</script>
