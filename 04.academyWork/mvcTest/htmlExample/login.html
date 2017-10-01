@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>BOOK LOVE</title>
+
+<!-- external css 후 -->
+<link type="text/css" href="css/common.css" rel="stylesheet" />
+
+<!-- javascript 외부 -->
+
+<!-- javascript 내부 -->
+<script type="text/javascript">
+	/* 페이지 로드시 로그인 아이디에 포커스 설정*/
+	window.onload = function(){
+		//alert("페이지가 로딩되었습니다.")
+		var takeForm = document.LoginForm;
+		takeForm.memberId.focus();
+	}
+</script>
+
+</head>
+<body>
+
+<!-- 상단 메뉴 -->
+<div>
+	<div>
+	<input type="image" src="images/domain.jpg" onclick="location='index.html'">
+	</div>
+	<div style="float:Right">
+		<a class="normal" href="">NEWS</a>&nbsp;&nbsp;
+		<a class="normal" href="event.html">EVENT</a>&nbsp;&nbsp;
+		<a class="normal" href="">BEST</a>&nbsp;&nbsp;|&nbsp;
+		<a class="normal" href="login.html">로그인</a>&nbsp;&nbsp;
+		<a class="normal" href="signup.html">회원가입</a>&nbsp;&nbsp;
+		<a class="normal" href="">ID/PW찾기</a>
+	</div>
+</div>
+
+<!-- 구분선 -->
+<hr color="#808080" size="3"><br><br>
+
+<!-- 로그인 입력창 -->
+<table cellpadding="5" align="center">
+<form action="index_after.html" method="post" name="LoginForm" id="LoginForm">
+	<tr>
+		<td colspan=3 align="center">
+		<img class="logoimage" src="images/loginlogo.jpg">
+		</td>
+	</tr>
+	<tr>
+		<!-- 아이디 -->
+		<td class="property">아이디</td>
+		<td><input type="text" name="memberId" size="40" tabindex="1"></td>
+		<td rowspan=2>
+		<!-- submit버튼 -->
+		<input type="submit" value="로그인" tabindex="3"></td>
+	</tr>
+	<tr>
+		<!-- 비밀번호 -->
+		<td class="property">비밀번호</td>
+		<td><input type="text" name="memberPw" size="40" tabindex="2"></td>
+	</tr>
+	<tr>
+		<!-- 아이디 비밀번호 찾기, 비밀번호 변경 -->
+		<td>&nbsp;</td>
+		<td align="center">
+		<!-- 아이디(학번)/비밀번호 찾기 -->
+		<input type="button" value="아이디/비밀번호 찾기">
+		<!-- 비밀번호 변경 -->
+		<input type="button" value="비밀번호 변경">
+		</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<!-- 언어선택 -->
+		<td>&nbsp;</td>
+		<td align="center">
+		<input type="radio" name="language" value="korean" checked>Korean
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="radio" name="language" value="english">English
+		</td>
+		<td>&nbsp;</td>
+	</tr>
+</form>
+</table>
+
+<!-- 구분선 -->
+<hr class="yellowline" color="#C26225" size="1" width="700">
+
+<!-- 공인인증서 로그인 입력창 -->
+<form action="index_after.html" method="post">
+<table cellpadding="5" align="center">
+	<tr>
+		<td colspan=3 align="center">
+		<!-- 공인인증서 제목 이미지 -->
+		<img class="logoimage" src="images/cert_login.jpg">
+		</td>
+	</tr>
+	<tr>
+		<!-- 주민등록번호 -->
+		<td align="left">주민등록번호</td>
+		<td>
+			<!-- 주민등록번호 입력 -->
+			<input type="text" name="memberNumF" size="13" maxlength="6">
+			<input type="password" name="memberNumB" size="13" maxlength="7">
+		</td>
+		<!-- submit버튼 -->
+		<td><input class="thinsubmit" type="submit" value="로그인"></td>
+	</tr>
+</table>
+</form>
+
+<!-- 구분선 -->
+<hr class="yellowline" color="#C26225" size="1" width="700">
+
+<!-- 로그인시 유의사항 -->
+<center>
+<font color="#233B5D" size="3">로그인시 유의사항</font>
+<font size="2"><br>원하는 서비스를 이용하신 후 자리를 비우게 될 경우에는 반드시 로그아웃 하시기 바랍니다.
+<br>비밀번호는 주기적으로 변경 관리하시고 타인에게 노출되지 않도록 주의하시기 바랍니다.</font>
+</center>
+
+<!-- footer -->
+<div class="page-footer">@2017 삼육대학교 컴퓨터학부 장윤정 취업아카데미_임경혜강사님</div>
+
+</body>
+
+</html>

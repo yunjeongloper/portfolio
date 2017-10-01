@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>ch07 : 주소록</TITLE>
+<style>
+table {
+    border-collapse: collapse;
+}
+
+table, td {
+    border: 1px solid black;
+}
+
+.center {
+	text-align: center;
+}
+</style>
+</HEAD>
+<BODY>
+<div align = center>
+<H2>주소록 등록</H2>
+<HR>
+
+	<form name=form1 method="post" action=addr_add.jsp>
+	<table>
+	<tr><td>이 름</td><td><input type=text size=20 name=username value="testName"></td></tr>
+	<tr><td>전화번호</td><td><input type=text size=20 name=tel value="010-111-1234"></td></tr>
+	<tr><td>이메일</td><td><input type=text size=20 name=email value="aa@aaa.net"></td></tr>
+	<tr><td>성별</td><td><select name=sex ><option>남</option><option selected>여</option></select></td></tr>
+	<tr><td colspan=2 class="center"><input type=submit value="확인"><input type=reset value="취소"></td></tr>
+	</table>
+	</form>
+</div>
+</BODY>
+</HTML>

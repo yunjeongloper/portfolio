@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+
+div{
+	margin : 20px 20px 20px 20px;
+}
+
+.logo{
+	font-size: 2em;
+}
+
+.tablestyle{
+	padding: 10px 10px 10px 10px;
+}
+
+</style>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		
+ 		$(".btn").click(function(){
+			let com = Math.floor(Math.random()*3);
+ 			let my = $(this).val();
+ 			
+ 			if(my == "가위") {my = 0;}
+ 			else if(my == "바위") {my = 1;}
+ 			else if(my == "보") {my = 2;}
+ 			
+ 			$("#my").html(changeText(my));
+			$("#com").html(changeText(com));
+			$("#vs").html(takeResult(my,com));
+ 		});
+ 		
+	});
+	
+	function takeResult(my, com){
+		var diff = com - my;
+		switch(diff){
+		case -2:
+		case 1:
+			return '<img src = "images/lose.jpg">';
+		case -1:
+		case 2:
+			return '<img src = "images/win.jpg">';
+		default:
+			return '<img src = "images/draw.jpg">';
+		}
+	}
+	
+	function changeText(val){
+		if(val==0)
+			return '<img src = "images/가위.jpg">';
+		else if (val==1)
+			
+			return '<img src = "images/바위.jpg">';
+		else if (val==2)
+			return '<img src = "images/보.jpg">';
+	}
+	
+</script>
+</head>
+<body>
+
+<div class = "logo">
+가위바위보 게임
+</div>
+
+<div>
+<table class = "tablestyle" border = "1">
+	<tr>
+		<th><img src = "images/가위.jpg"></th>
+		<th><img src = "images/바위.jpg"></th>
+		<th><img src = "images/보.jpg"></th>		
+	</tr>
+	<tr>
+		<th><input type ="button" class = "btn" value = "가위"></th>
+		<th><input type ="button" class = "btn" value = "바위"></th>
+		<th><input type ="button" class = "btn" value = "보"></th>
+	</tr>
+</table>
+</div>
+
+<div>
+<table class = "tablestyle" border = "1">
+	<tr>
+		<td>my</td><td>VS</td><td>com</td>
+	</tr>
+	<tr>
+		<td id = "my"></td>
+		<td id = "vs"></td>
+		<td id = "com"></td>
+	</tr>
+</table>
+</div>
+
+</body>
+</html>
+
+
+

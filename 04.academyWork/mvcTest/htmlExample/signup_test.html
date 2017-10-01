@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>BOOK LOVE</title>
+<!-- external css 후 -->
+<link type="text/css" href="css/common.css" rel="stylesheet" />
+</head>
+<body>
+
+<!-- 상단 메뉴 -->
+<div>
+	<div>
+	<input type="image" src="images/domain.jpg" onclick="location='index.html'">
+	</div>
+	<div style="float:Right">
+		<a class="normal" href="">NEWS</a>&nbsp;&nbsp;
+		<a class="normal" href="event.html">EVENT</a>&nbsp;&nbsp;
+		<a class="normal" href="">BEST</a>&nbsp;&nbsp;|&nbsp;
+		<a class="normal" href="login.html">로그인</a>&nbsp;&nbsp;
+		<a class="normal" href="signup.html">회원가입</a>&nbsp;&nbsp;
+		<a class="normal" href="">ID/PW찾기</a>
+	</div>
+</div>
+
+<!-- 구분선 -->
+<hr color="#808080" size="3"><br><br>
+
+<table cellpadding="5" align="center">
+<form action="login.html" method="get">
+<tr>
+	<td colspan=3 align="center">
+	<img class="logoimage" src="images/signuplogo.jpg">
+	</td>
+</tr>
+
+<tr>
+	<!-- 아이디 -->
+	<td><font>아이디</font></td>
+	<td width="260">
+		<input class="form_style" type="text" name="memberId" size="38" min="3" max="20"><br>
+		<font size="1">&nbsp;-> 중복을 확인해 주세요</font>
+	</td>
+	<td>
+		<input type="button" value="아이디 중복확인" onclick="alert('추후')">
+	</td>
+</tr>
+
+<tr>
+	<!-- 이름 -->
+	<td>이름</td>
+	<td><input type="text" name="memberName" size="38" maxlength="10"></td>
+</tr>
+
+<tr>
+	<!-- 비밀번호 -->
+	<td>비밀번호</td>
+	<td><input type="text" name="memberPw" size="38" maxlength="20"></td>
+</tr>
+
+<tr>
+	<!-- 비밀번호 확인 -->
+	<td>비밀번호 확인</td>
+	<td><input type="text" name="checkPw" size="38" maxlength="20"></td>
+</tr>
+
+<tr>
+	<!-- 연락처 -->
+	<td>연락처</td>
+	<td><select name="mobileCompany">
+			<option value="none">없음</option>
+			<option>SKT</option>
+			<option>LGT</option>
+			<option>KT</option></select>-	
+	    <input type="text" name="mobileFirst" size="27">
+	</td>
+</tr>
+	
+<tr>
+	<!-- 이메일 -->
+	<td>이메일</td>
+	<td>
+		<input type="text" name="emailId" size="15">@
+		<input type="text" name="checkPw" size="15"><br>
+    </td>
+</tr>
+
+<tr>
+	<!-- 등급 -->
+	<td>등급</td>
+	<td colspan="2">
+		<input type="radio" name="grade" value="G" checked readonly><font face="나눔고딕" size="2">일반회원</font>&nbsp;
+		<input type="radio" name="grade" value="S" disabled><font face="나눔고딕" size="2">우수회원</font>&nbsp;
+		<input type="radio" name="grade" value="A" disabled><font face="나눔고딕" size="2">관리자</font>&nbsp;
+    </td>
+</tr>
+
+<tr>
+	<!-- 마일리지 -->
+	<td>마일리지</td>
+	<td colspan="2"><input type="text" value="1000" size="38"
+		style="background-color:#E6E6E6" readonly></td>
+</tr>
+
+<tr>
+	<!-- 주의사항 -->
+	<td colspan=3> <font size="1">
+	-> 이메일 또는 핸드폰번호는 아이디, 비밀번호를 찾기위해 꼭 필요한 정보이므로 정확하게 입력해주세요</font>
+	</td>
+</tr>
+
+<tr>
+	<!-- 각종 동의 -->
+	<td colspan=3> 
+	<hr color="#9B9740" size="1" width="500" align="left">
+	<input type="checkbox" name="adult"><font size="2" face="나눔고딕">본인은 14세 이상입니다</font><br>
+	<input type="checkbox" name="adult"><font size="2" face="나눔고딕">이메일 수신동의</font><br>
+	<input type="checkbox" name="adult"><font size="2" face="나눔고딕">이용약관에 동의합니다</font><br>
+	<input type="checkbox" name="adult"><font size="2" face="나눔고딕">개인정보 취급방침에 동의합니다</font>
+	<hr color="#9B9740" size="1" width="500" align="left">
+	</td>
+</tr>
+<tr>
+	<td colspan="3" align="center">
+	<input class="thinsubmit" style="height:50px;width:130px;" type="submit" value="회원가입">
+	</td>
+</tr>
+</form>
+</table>
+
+<!-- footer -->
+<div class="page-footer">@2017 삼육대학교 컴퓨터학부 장윤정 취업아카데미_임경혜강사님</div>
+
+</body>
+</html>

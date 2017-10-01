@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+
+div{
+	margin: 20px 20px 20px 20px;
+}
+
+.btn{
+	width: 50px;
+	height: 50px;
+	color: white;
+	background-color: #00688B;
+	font-size: 20px;
+}
+
+.start{
+	width: 70px;
+	height: 30px;
+	background-color: #D1EEEE;
+	font-size: 20px;
+}
+</style>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+
+	// shuffle할 숫자 1~9 / 10~18 나눠서 배열에 담음
+	var ranNum1 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25];
+	var ranNum2 = [26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50];
+	
+	// shuffle 함수
+	function shuffle(array) {
+		var j, x, i;
+		for (i=array.length; i; i--){
+			j = Math.floor(Math.random()*i);
+			x = array[i-1];
+			array[i-1] = array[j];
+			array[j] = x;
+		}
+	}
+	
+	// setInterval, clearInterval, milliseconds 변환
+	var sum = 0;
+	var myVar;
+	
+	function myStopFunction() {
+	    clearInterval(myVar);
+	}
+	
+	function convertSeconds(time) {
+		  var seconds = Math.floor(time / 100);
+		  var milliseconds = (time % 100).toFixed(0);
+		  return seconds + "." + (milliseconds < 10 ? '0' : '') + milliseconds;
+	}
+	
+	$(document).ready(function(){
+		// setNum은 숫자 뿌려질 때, countNum은 어디까지 클릭했는지
+		var setNum = 0;
+		var countNum = 1;
+		
+ 		$(".btn").click(function(){
+ 			// shuffle하고 시작하도록
+ 			if(setNum<25){
+ 				alert("start 버튼을 눌러주세요");
+ 			}
+ 			// 숫자를 순차적으로 누르지 않았을 때 
+ 			else if ($(this).val()!=countNum) {
+ 				$(this).effect("shake");
+ 			}
+ 			// 26~50(후반) 숫자를 눌렀을 때
+ 			else if ($(this).val()>25) {
+				$(this).fadeOut(150, function() {
+	 	 			$(this).val(" ").css("backgroundColor","white");
+	 	 		});
+				$(this).fadeIn(150);
+ 				countNum += 1;
+ 				if(countNum==51){
+ 					alert("끝!! "+convertSeconds(sum)+"초 걸렸습니다");
+ 					myStopFunction();
+ 				}
+ 			}
+ 			// 위에 해당하지 않을 때 _ 1~25(전반) 숫자를 눌렀을 때
+ 			else {
+ 				setNum += 1;
+ 				countNum += 1;
+				$(this).fadeOut(150, function() {
+	 	 			$(this).val(ranNum2[setNum-26]).css("backgroundColor","#104E8B");
+				});
+				$(this).fadeIn(150);
+				
+ 			}
+ 		});
+	
+ 		// shuffle 후 화면에 숫자 뿌려줌
+ 		$(".start").click(function(){
+ 			
+ 			sum = 0;
+ 			setNum = 25;
+ 			countNum = 1;
+ 			
+ 			// 숫자 shuffle후 화면에 표시
+ 			$(".start").val("start");
+ 			shuffle(ranNum1);
+ 			shuffle(ranNum2);
+ 			$(".btn").each(function(index,item){
+ 				$(this).val(ranNum1[index]).css("backgroundColor","#00688B");
+ 			});
+ 			
+ 			// 시간 표시
+ 			myVar = setInterval(function(){
+ 				sum += 1; 
+ 	 			$("#timer").text("TIME : "+convertSeconds(sum));
+ 			}, 10);
+
+			// retry 버튼 활성화
+			$(".start").val("retry");
+			$(".start").click(function(){
+				location.reload();
+			});
+ 		});
+	});
+	
+</script>
+</head>
+<body>
+
+<div class = "logo"><img src = "images/1to50_logo.jpg"></div>
+
+<div id = "timer">TIME : 0</div>
+
+<div>
+<table>
+	<tr>
+		<th><input type ="button" class = "btn" value = "1"></th>
+		<th><input type ="button" class = "btn" value = "2"></th>
+		<th><input type ="button" class = "btn" value = "3"></th>	
+		<th><input type ="button" class = "btn" value = "4"></th>
+		<th><input type ="button" class = "btn" value = "5"></th>	
+	</tr>
+	<tr>
+		<th><input type ="button" class = "btn" value = "6"></th>
+		<th><input type ="button" class = "btn" value = "7"></th>
+		<th><input type ="button" class = "btn" value = "8"></th>	
+		<th><input type ="button" class = "btn" value = "9"></th>
+		<th><input type ="button" class = "btn" value = "10"></th>	
+	</tr>
+	<tr>
+		<th><input type ="button" class = "btn" value = "11"></th>
+		<th><input type ="button" class = "btn" value = "12"></th>
+		<th><input type ="button" class = "btn" value = "13"></th>	
+		<th><input type ="button" class = "btn" value = "14"></th>
+		<th><input type ="button" class = "btn" value = "15"></th>	
+	</tr>
+	<tr>
+		<th><input type ="button" class = "btn" value = "16"></th>
+		<th><input type ="button" class = "btn" value = "17"></th>
+		<th><input type ="button" class = "btn" value = "18"></th>	
+		<th><input type ="button" class = "btn" value = "19"></th>
+		<th><input type ="button" class = "btn" value = "20"></th>	
+	</tr>
+	<tr>
+		<th><input type ="button" class = "btn" value = "21"></th>
+		<th><input type ="button" class = "btn" value = "22"></th>
+		<th><input type ="button" class = "btn" value = "23"></th>	
+		<th><input type ="button" class = "btn" value = "24"></th>
+		<th><input type ="button" class = "btn" value = "25"></th>	
+	</tr>
+</table>
+</div>
+
+<div>
+<input type ="button" class = "start" value = "start"><br>
+</div>
+
+</body>
+</html>
+
+
+
