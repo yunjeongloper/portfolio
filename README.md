@@ -2,6 +2,11 @@ Hello!
 
 Let me introduce myself XD
 
+## KSA 빅데이터 분석기법을 활용한 Java 개발자 양성과정 미니 프로젝트
+* [jQuery](https://github.com/yunjeongloper/portfolio/tree/master/04.academyWork/jQuery)
+* [javaBeans](https://github.com/yunjeongloper/portfolio/tree/master/04.academyWork/javaBeans)
+* [javaGui](https://github.com/yunjeongloper/portfolio/tree/master/04.academyWork/javaGui)
+* [mvcTest](https://github.com/yunjeongloper/portfolio/tree/master/04.academyWork/mvcTest)
 
 ## 삼육대학교 동적 웹 프로그래밍 팀프로젝트
 * 프로젝트  명 : 인문학 컨텐츠 추천 웹 [The Letter](https://github.com/yunjeongloper/portfolio/tree/master/03.dynamicwork)
