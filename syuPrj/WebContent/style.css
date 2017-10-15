@@ -1,0 +1,55 @@
+/* style.css */
+
+@media only screen and (min-width:1000px)
+{
+	body { font-size:9pt; color:#333333; line-height:180%;}
+	.TEST { display:;}
+}
+
+@media only screen and (min-width:800px) and (max-width:1000px)
+{
+	body { background-color:#00FF00; font-size:9pt; color:#333333; line-height:180%;}
+	.TEST { display:;}
+}
+
+@media only screen and (max-width:800px)
+{
+	body { background-color:#0FFFFF; font-size:9pt; color:#333333; line-height:180%;}
+}
+
+
+table { border-collapse:collapse; }
+
+a:link { font-size:9pt; color:#333333; text-decoration:none;}
+a:visited { font-size:9pt; color:#333333; text-decoration:none;}
+a:hover { font-size:9pt; color:#0000FF; text-decoration:underline;}
+
+td { text-align:center; }
+
+.input { width:90%; }
+.inputModel { width:90%; }
+.listImg { 
+	border-radius:0px 10px 20px 30px; 
+	border: 0px solid #FF0000;
+}
+
+.detailLeft{ text-align:right; width:45%;}
+.detailCenter{ text-align:right; width:10%;}
+.detailRight{ text-align:left; width:45%;}
+.totalPrice{ 
+	width:80%; 
+	text-align:center;
+	font-weight:bold;
+	border:0px solid #FF0000;
+	color: #FF0000;
+	/*
+	border-top:0px solid #FF0000;
+	border-left:1px solid #FF0000;
+	border-right:2px solid #FF0000;
+	border-bottom:3px solid #FF0000;
+	*/
+	}
+
+.body { }	/* body class */
+
+#body { }

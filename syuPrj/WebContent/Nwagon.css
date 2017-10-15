@@ -1,0 +1,103 @@
+@charset "utf-8";
+v\:group,
+v\:shape,
+v\:line,
+v\:polyline,
+v\:rect,
+v\:oval,
+v\:fill {
+	behavior : url(#default#VML);
+}
+
+v\: * {behavior : url(#default#VML);}
+/*common*/
+.background text{fill:#666;font-family:'나눔고딕', '돋움', Dotum;font-size:11px}
+ul.accessibility {font-size: 1px;height: 1px; line-height: 1px; overflow: hidden; width: 1px;}
+.background .fields text{fill:#666;font-family:'나눔고딕', '돋움', Dotum;font-size:11px}
+.foreground .labels text{fill:#666;font-family:'나눔고딕', '돋움', Dotum;font-size:11px}
+.tooltip text{fill:#777;font-family:'나눔고딕', '돋움', Dotum;font-size: 11px;}
+.tooltip rect{fill:rgba(255,255,255,0.9);stroke:#ccc;stroke-width:0.5;}
+.fields text{fill:#666;font-family:'나눔고딕', '돋움', Dotum;font-size:11px}
+.guide_line{stroke:#4010ad;stroke-width:1}
+
+/* Column Type */
+.Nwagon_column .background line.h{stroke:#000;stroke-width:0.2;}
+.Nwagon_column .background line.v{stroke:#000;stroke-width:0.1;}
+.Nwagon_column .foreground .columns g rect{fill-opacity:0.7;cursor:pointer;}
+.Nwagon_column .foreground .tooltip text{fill:#777;font-family:'나눔고딕', '돋움', Dotum;font-size: 9px;}
+.Nwagon_column .foreground .tooltip rect{fill:rgba(255,255,255,0.9);stroke:#ccc;stroke-width:0.5;}
+.Nwagon_column .labels text, .Nwagon_column .background text{fill:#666;font-family:'나눔고딕', '돋움', Dotum;font-size:11px;}
+
+/*stacked_column*/
+.Nwagon_stacked_column .background line.h{stroke:#000;stroke-width:0.2;}
+.Nwagon_stacked_column .background line.v{stroke:#000;stroke-width:0.1;}
+.Nwagon_stacked_column .foreground .columns g rect{fill-opacity:0.7;cursor:pointer;}
+.Nwagon_stacked_column .foreground .tooltip text{fill:#777;font-family:'나눔고딕', '돋움', Dotum;font-size: 9px;}
+.Nwagon_stacked_column .foreground .tooltip rect{fill:rgba(255,255,255,0.9);stroke:#ccc;stroke-width:0.5;}
+.Nwagon_stacked_column .labels text, .Nwagon_stacked_column .background text{fill:#666;font-family:'나눔고딕', '돋움', Dotum;font-size:11px;}
+
+/*multi_column*/
+.Nwagon_multi_column .background line.h{stroke:#000;stroke-width:0.2;}
+.Nwagon_multi_column .background line.v{stroke:#000;stroke-width:0.1;}
+.Nwagon_multi_column .foreground .columns g rect{fill-opacity:0.7;cursor:pointer;}
+.Nwagon_multi_column .foreground .tooltip text{fill:#777;font-family:'나눔고딕', '돋움', Dotum;font-size: 9px;}
+.Nwagon_multi_column .foreground .tooltip rect{fill:rgba(255,255,255,0.9);stroke:#ccc;stroke-width:0.5;}
+.Nwagon_multi_column .labels text, .Nwagon_stacked_column .background text{fill:#666;font-family:'나눔고딕', '돋움', Dotum;font-size:11px;}
+
+/*Line*/
+.Nwagon_line .background line.h{stroke:#999;stroke-width:1;}
+.Nwagon_line .background line.h_dash{stroke:#000;stroke-width:0.3;stroke-dasharray: 3px 1px;}
+.Nwagon_line .background line.v{stroke:#999;stroke-width:1;}
+.Nwagon_line .foreground .lines g rect{fill-opacity:0.7;cursor:pointer;}
+.Nwagon_line .foreground .circles g rect{fill-opacity:0.7;cursor:pointer;}
+.Nwagon_line .foreground .circles circle{stroke-width:2px; cursor:pointer;}
+.Nwagon_line .foreground .lines path{fill:none; stroke-width:2px;}
+.Nwagon_line .labels text, .Nwagon_line .background text{fill:#666;font-family:'나눔고딕', '돋움', Dotum;font-size:11px;}
+
+/*Area*/
+.Nwagon_area .background line.h{stroke:#999;stroke-width:1;}
+.Nwagon_area .background line.h_dash{stroke:#000;stroke-width:0.3;stroke-dasharray: 3px 1px;}
+.Nwagon_area .background line.v{stroke:#999;stroke-width:1;}
+.Nwagon_area .foreground .lines g rect{fill-opacity:0.7;cursor:pointer;}
+.Nwagon_area .foreground .circles g rect{fill-opacity:0.7;cursor:pointer;}
+.Nwagon_area .foreground .circles circle{stroke-width:2px; cursor:pointer;}
+.Nwagon_area .foreground .lines path{stroke-width:2px;}
+.Nwagon_area .labels text, .Nwagon_line .background text{fill:#666;font-family:'나눔고딕', '돋움', Dotum;font-size:11px;}
+
+/*Jira*/
+.Nwagon_jira .background line.h{stroke:#999;stroke-width:1;}
+.Nwagon_jira .background line.h_dash{stroke:#000;stroke-width:0.3;stroke-dasharray: 3px 1px;}
+.Nwagon_jira .background line.v{stroke:#999;stroke-width:1;}
+.Nwagon_jira .foreground .lines g rect{fill-opacity:0.7;cursor:pointer;}
+.Nwagon_jira .foreground .circles g rect{fill-opacity:0.7;cursor:pointer;}
+.Nwagon_jira .foreground .circles circle{stroke-width:2px; cursor:pointer;}
+.Nwagon_jira .foreground .polygon path{stroke-width:0;}
+.Nwagon_jira .foreground .polygon .layered{fill:#FFF; stroke:#FFF; opacity:0.7}
+.Nwagon_jira .foreground .lines path{fill:none; stroke-width:2px;}
+.Nwagon_jira .labels text, .Nwagon_line .background text{fill:#666;font-family:'나눔고딕', '돋움', Dotum;font-size:11px;}
+
+/*common polar/polar_pie*/
+.background path {stroke:#CCC;stroke-width:1; fill:none;}
+.background line.v{stroke:#CCC;stroke-width:1;}
+.foreground .pies .sector{stroke-width:1; stroke:#fff; cursor:pointer}
+.foreground .pies .sector{stroke-width:1; stroke:#fff; cursor:pointer}
+.xAxis text{fill:#000;font-family:'나눔고딕', '돋움', Dotum;font-size:8px;}
+.Nwagon_polar .labels text, .Nwagon_polar .background text{fill:#666;font-family:'나눔고딕', '돋움', Dotum;font-size:11px;}
+.Nwagon_polar_pie .labels text, .Nwagon_polar_pie .background text{fill:#666;font-family:'나눔고딕', '돋움', Dotum;font-size:11px;}
+.core .core_text {fill:#444;font-family:'나눔고딕', '돋움', Dotum;font-size:15px;}
+
+/*pie and donut */
+.foreground .donuts .sector {stroke-width:1; stroke:#fff; cursor:pointer}
+
+/* Radar Type */
+.Nwagon_radar .background .pie polyline{stroke:#000;stroke-width:0.2;}
+.Nwagon_radar .foreground .pie polyline{fill:#000;stroke:#000;stroke-width:0.2;opacity:0.1}
+.Nwagon_radar .labels text{fill:#666;font-family:'나눔고딕', '돋움', Dotum;font-size:11px;cursor:pointer;}
+.Nwagon_radar .labels text:hover{text-decoration:underline;}
+.Nwagon_radar .xAxis text{fill:#000;font-family:'나눔고딕', '돋움', Dotum;font-size:8px;}
+.Nwagon_radar .foreground polyline.polygon{opacity:0.4;}
+.Nwagon_radar .foreground circle{stroke-width:8,stroke:transparent}
+.Nwagon_radar .foreground circle.dim{fill:#fff;stroke:#aaa;stroke-width:1;}
+
+/* < IE8  */
+div.label_ie {padding:0; margin:0;}
