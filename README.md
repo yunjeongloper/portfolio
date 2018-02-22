@@ -2,11 +2,22 @@ Hello!
 
 Let me introduce myself XD
 
+
+## 삼육대학교 컴퓨터학부 프로젝트 경진대회 (팀:흥해도 청춘 망해도 청춘)
+* 프로젝트  명 : [센서를 이용한 애완동물 보호 시스템](https://github.com/yunjeongloper/portfolio/tree/master/HCMC/views)
+* OS   및   DB : Windows 8, Maria DB, Mybatis
+* 사용    언어 : JAVA, HTML5, CSS , JAVA Script, jQuery, AJAX , Python3
+* 프로젝트소개 : 라즈베리 파이와 초음파 센서 카메라를 이용해서 반려동물의 움직임을 파악하는 시스템을 개발하였습니다.
+* 담 당  업 무 : Python3로 센서를 연결 후 특정 거리에 도달했을 때 알람을 울리게 함
+  사용자 페이지에서 회원가입과 CCTV 페이지를 Spring으로 개발함
+
+
 ## KSA 빅데이터 분석기법을 활용한 Java 개발자 양성과정 미니 프로젝트
 * [jQuery](https://github.com/yunjeongloper/portfolio/tree/master/04.academyWork/jQuery)
 * [javaBeans](https://github.com/yunjeongloper/portfolio/tree/master/04.academyWork/javaBeans)
 * [javaGui](https://github.com/yunjeongloper/portfolio/tree/master/04.academyWork/javaGui)
 * [mvcTest](https://github.com/yunjeongloper/portfolio/tree/master/04.academyWork/mvcTest)
+
 
 ## 삼육대학교 동적 웹 프로그래밍 팀프로젝트
 * 프로젝트  명 : 인문학 컨텐츠 추천 웹 [The Letter](https://github.com/yunjeongloper/portfolio/tree/master/03.dynamicwork)
