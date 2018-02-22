@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.devunlimit.project.member.domain.dao.AccountDAO">
+
+  <select id="findByUsername"
+    resultType="com.devunlimit.project.member.domain.dto.MemberDTO"
+    parameterType="String">
+    select * from member where id = #{id}
+  </select>
+
+  <select id="isAccountLock"
+    resultType="String"
+    parameterType="int">
+    select is_account_lock from loginlog where member_no = #{memberno}
+  </select>
+
+  <update id="plusFailCount"
+    parameterType="int">
+    update loginlog
+    set login_fail_count = login_fail_count + 1, latest_login_date = NOW()
+    where member_no = #{memberno}
+  </update>
+
+  <update id="updateAccountLock"
+    parameterType="int">
+    update loginlog
+    set is_account_lock = 'Y'
+    where member_no = #{memberno} and login_fail_count >= 5
+  </update>
+
+  <insert id="firstLogInsert"
+    parameterType="int">
+    insert into loginlog values ( #{memberno}, 1, 'N', NOW())
+  </insert>
+
+</mapper>

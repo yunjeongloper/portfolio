@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.devunlimit.project.admin.domain.dao.AdminDAO">
+  <select id="checkAdmin" resultType="int">
+    select authority from member where id = #{id}
+  </select>
+
+  <select id="adminList" resultType="com.devunlimit.project.admin.domain.dto.AdminDTO">
+    select m.no, m.name, m.id, m.phone, CASE WHEN l.is_account_lock IS NULL THEN 'N'
+    ELSE l.is_account_lock END AS is_account_lock
+    from member m left join loginlog l
+    on m.no = l.member_no and l.is_account_lock = 'Y'
+    order by m.no
+  </select>
+
+  <select id="searchId" resultType="com.devunlimit.project.admin.domain.dto.AdminDTO">
+    select m.no, m.name, m.id, m.phone, CASE WHEN l.is_account_lock IS NULL THEN 'N'
+    ELSE l.is_account_lock END AS is_account_lock
+    from member m left join loginlog l
+    on m.no = l.member_no and l.is_account_lock = 'Y'
+    where m.id = #{data}
+    order by m.no
+  </select>
+
+  <select id="searchName" resultType="com.devunlimit.project.admin.domain.dto.AdminDTO">
+    select m.no, m.name, m.id, m.phone, CASE WHEN l.is_account_lock IS NULL THEN 'N'
+    ELSE l.is_account_lock END AS is_account_lock
+    from member m left join loginlog l
+    on m.no = l.member_no and l.is_account_lock = 'Y'
+    where m.name = #{data}
+    order by m.no
+  </select>
+
+  <select id="searchPhone" resultType="com.devunlimit.project.admin.domain.dto.AdminDTO">
+    select m.no, m.name, m.id, m.phone, CASE WHEN l.is_account_lock IS NULL THEN 'N'
+    ELSE l.is_account_lock END AS is_account_lock
+    from member m left join loginlog l
+    on m.no = l.member_no and l.is_account_lock = 'Y'
+    where m.phone = #{data}
+    order by m.no
+  </select>
+
+  <select id="searchStatus" parameterType="String" resultType="com.devunlimit.project.admin.domain.dto.AdminDTO">
+  select m.no, m.name, m.id, m.phone, CASE WHEN l.is_account_lock IS NULL THEN 'N'
+  ELSE l.is_account_lock END AS is_account_lock
+  from member m left join loginlog l
+  on m.no = l.member_no and l.is_account_lock = 'Y'
+  <where>
+    <if test='_parameter == "Y"'>
+      l.is_account_lock = #{data}
+    </if>
+    <if test='_parameter == "N"'>
+      l.is_account_lock is null
+    </if>
+  </where>
+  order by m.no
+</select>
+
+  <delete id="modify">
+    delete from loginlog
+    where member_no = #{no}
+  </delete>
+
+</mapper>

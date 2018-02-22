@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.devunlimit.project.board.domain.dao.ReplyDAO">
+
+
+    <select id="selectList" resultType="com.devunlimit.project.board.domain.dto.ReplyDTO">
+        SELECT a.no, a.board_no, a.content, member.id AS writer, a.writer AS writer_no, a.write_date, a.parents_no, a.delete_ok,
+        ( SELECT count(*) FROM comment b WHERE a.no=b.parents_no ) AS re_re
+        FROM comment a
+        JOIN member
+        ON member.no = a.writer
+        AND a.board_no = #{boardNum}
+        ORDER BY a.parents_no asc, a.no asc;
+    </select>
+
+    <insert id="insertReply" useGeneratedKeys="true" keyProperty="reply.no">
+        INSERT INTO comment ( board_no, content, writer, write_date, parents_no )
+        VALUES ( #{reply.board_no}, #{reply.content}, #{reply.writer}, now(), #{reply.parents_no} )
+    </insert>
+
+    <update id="updateReplyParents">
+        UPDATE comment
+        SET parents_no = #{replyNo}
+        WHERE no = #{replyNo}
+        AND parents_no = 0
+    </update>
+
+    <update id="deleteReply">
+        UPDATE comment
+        SET delete_ok = '1'
+        WHERE no = #{no}
+    </update>
+
+    <delete id="deleteUpdate">
+        DELETE FROM comment
+        WHERE no=#{no}
+        AND parents_no!=#{no}
+        AND delete_ok='1';
+    </delete>
+
+    <update id="updateReply">
+        UPDATE comment
+        SET content = #{content}, write_date = NOW()
+        WHERE no = #{no}
+    </update>
+
+    <select id="deletedReplyNum" resultType="int">
+        SELECT IFNULL((count(delete_ok)),0) AS deleted
+        FROM comment
+        WHERE board_no = #{boardNum}
+            AND delete_ok = 1;
+    </select>
+
+</mapper>

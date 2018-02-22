@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.devunlimit.project.board.domain.dao.BoardCreateDAO">
+    <insert id="insertBoard" useGeneratedKeys="true" keyProperty="board.no">
+        insert into board (subject,content,writer,write_date,notice) values( #{board.subject},#{board.content},#{board.writer},now(),#{board.notice});
+    </insert>
+
+    <update id="updateBoardParents">
+        update board set parents_no = #{parentsNo} where no = #{boardNo}
+    </update>
+
+    <insert id="insertFile">
+        insert into board_file ( board_no , origin_name , save_name , url ) values ( #{file.boardNo},#{file.originName},#{file.saveName},#{file.url})
+    </insert>
+
+    <insert id="insertImage" useGeneratedKeys="true" keyProperty="file.no">
+        insert into board_image ( board_no , origin_name , save_name , url ) values ( #{file.boardNo},#{file.originName},#{file.saveName},#{file.url})
+    </insert>
+
+    <update id="updateFileNo">
+        update board_image set board_no = #{boardNo} where no = #{no}
+    </update>
+</mapper>

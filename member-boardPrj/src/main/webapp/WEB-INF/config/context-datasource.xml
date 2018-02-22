@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+  xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+						http://www.springframework.org/schema/jdbc  http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd
+						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+          http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+
+  <beans profile="dev">
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+      <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+      <property name="url"
+        value="jdbc:mysql://devunlimit.ccxnx2nar8sd.ap-northeast-2.rds.amazonaws.com:3306/board"/>
+      <property name="username" value="root"/>
+      <property name="password" value="a12341234"/>
+    </bean>
+  </beans>
+
+  <beans profile="oper">
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+      <property name="driverClassName" value="org.mariadb.jdbc.Driver"/>
+      <property name="url"
+        value="jdbc:mysql://devunlimittest.cwcmmwxswo98.ap-northeast-2.rds.amazonaws.com:3306/ateam"/>
+      <property name="username" value="devunlimit"/>
+      <property name="password" value="unlimit8884"/>
+    </bean>
+
+    <jdbc:initialize-database data-source="dataSource" ignore-failures="ALL">
+      <jdbc:script location="classpath:sql/createTable.sql"/>
+    </jdbc:initialize-database>
+  </beans>
+
+  <beans>
+    <!-- 트랜잭션 처리 -->
+    <bean id="transactionManager"
+      class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+      <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+  <!-- 애노테이션으로 트랜잭션 사용 -->
+    <tx:annotation-driven/>
+
+    <!-- SqlSessionFactory 정의 -->
+    <!-- typeAliasesPackage 속성에는 맵퍼 정의 파일(XML) 내의 SQL 문장에서 참조하는 도메인 클래스가 포함된 패키지를 지정 -->
+    <bean id="sqlSessionFactory"
+      class="org.mybatis.spring.SqlSessionFactoryBean">
+      <property name="dataSource" ref="dataSource"></property>
+      <property name="typeAliasesPackage"
+        value="board.dto">
+      </property>
+    </bean>
+
+    <!-- mybatis mapper 스캔 지정 -->
+    <!-- 맵퍼 인터페이스와 맵퍼 정의 파일에 의해 생성된 맵퍼 클래스를 빈에 주입 할 수 있도록 함 -->
+    <mybatis:scan base-package="com.devunlimit.project.*.domain.dao"/>
+  </beans>
+</beans>

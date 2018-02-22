@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.devunlimit.project.board.domain.dao.BoardDeleteDAO">
+	
+	<select id="boardExistCheck" resultType="int">
+		select count(*) from board
+		where no=#{no}
+	</select>
+
+	<update id="delete">
+	    update board
+	    set delete_ok=1
+	    where no=#{no}
+	</update>
+	
+	<update id="fileDelete">
+	    update board_file
+	    set delete_yn=1
+	    where board_no=#{no}
+	</update>
+	
+	<resultMap type="java.util.HashMap" id="image">
+		<result column="url" property="url" />
+		<result column="save_name" property="save_name" />
+	</resultMap>
+	
+	<select id="imageUrl" resultMap="image">
+	    select url, save_name from board_image
+	    where board_no=#{no}
+	</select>
+	
+	<delete id="imageDelete">
+	    delete from board_image
+	    where save_name=#{save_name}
+	</delete>
+	
+</mapper>

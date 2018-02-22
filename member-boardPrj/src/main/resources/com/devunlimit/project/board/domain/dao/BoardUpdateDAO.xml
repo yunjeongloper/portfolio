@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.devunlimit.project.board.domain.dao.BoardUpdateDAO">
+
+  <update id="updateBoard">
+    update board set subject = #{board.subject} , content = #{board.content}, notice = #{board.notice} where no = #{board.no}
+  </update>
+
+  <update id="defaultChangeDelete">
+    update board_file set delete_yn = 1 where board_no = #{boardNum}
+  </update>
+
+  <update id="usingFile">
+    update board_file set delete_yn = 0 where board_no = #{boardNum} and no = #{no}
+  </update>
+
+  <select id="longinUser" resultType="String">
+    select id from member where no = #{no}
+  </select>
+</mapper>

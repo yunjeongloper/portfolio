@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.devunlimit.project.board.domain.dao.BoardListDAO">
+    
+    <select id="selectLIst" resultType="com.devunlimit.project.board.domain.dto.BoardDTO">
+        select a.no, a.subject, b.writer, a.write_date, a.notice, a.count, a.parents_no, a.delete_ok, cnt from board a,
+				(select board.no AS no, subject , id AS writer , write_date, notice, count,parents_no,delete_ok, count(*) as cnt
+				from board
+        left join member on member.no = board.writer
+        <trim prefix="where">
+            <if test='searchData!=null and searchData!=""'>
+                <choose>
+                    <when test="searchType ==1">
+                        board.subject = #{searchData}
+                    </when>
+                    <when test="searchType ==2">
+                        board.content = #{searchData}
+                    </when>
+                    <when test="searchType ==3">
+                        id = #{searchData}
+                    </when>
+                    <when test="searchType ==4">
+                        board.subject = #{searchData}
+                        or
+                        board.content = #{searchData}
+                    </when>
+                </choose>
+            </if>
+        </trim>
+        group by parents_no) b
+				where a.parents_no=b.parents_no
+				and ((a.delete_ok,cnt) not in (select 1,1)
+				and a.no not in (select no from board where no!=parents_no and delete_ok=1))
+				order by a.parents_no desc, a.no asc
+        limit ${start -1},#{displayDataCount}
+    </select>
+
+    <select id="totalCount" resultType="int">
+        select count(*) from board a,
+				(select board.no AS no, subject , id AS writer , write_date, notice, count,parents_no,delete_ok, count(*) as cnt
+				from board
+        left join member on member.no = board.writer
+        <trim prefix="where">
+            <if test='searchData!=null and searchData!=""'>
+                <choose>
+                    <when test="searchType ==1">
+                        board.subject = #{searchData}
+                    </when>
+                    <when test="searchType ==2">
+                        board.content = #{searchData}
+                    </when>
+                    <when test="searchType ==3">
+                        id = #{searchData}
+                    </when>
+                    <when test="searchType ==4">
+                        board.subject = #{searchData}
+                        or
+                        board.content = #{searchData}
+                    </when>
+                </choose>
+            </if>
+        </trim>
+        group by parents_no) b
+				where a.parents_no=b.parents_no
+				and ((a.delete_ok,cnt) not in (select 1,1)
+				and a.no not in (select no from board where no!=parents_no and delete_ok=1))
+    </select>
+
+    <select id="noticeList" resultType="com.devunlimit.project.board.domain.dto.BoardDTO">
+        select
+        Case
+        WHEN board.notice = 1 THEN '공지'
+        ELSE board.no
+        END AS no,
+        subject , id AS writer , write_date, notice, count,parents_no from board
+        left join member on member.no = board.writer
+        where board.notice = 1
+        order by write_date
+    </select>
+
+</mapper>
