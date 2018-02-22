@@ -3,6 +3,15 @@ Hello!
 Let me introduce myself XD
 
 
+## 사내 팀 프로젝트
+* 프로젝트  명 : [TDD와 Spring Framework를 이용한 게시판 만들기](https://github.com/yunjeongloper/portfolio/tree/master/member-boardPrj)
+* OS   및   DB : Mac OS, Maria DB, Mybatis
+* 사용    언어 : JAVA, HTML5, CSS , JAVA Script, jQuery
+* 프로젝트소개 : TDD(테스트 주도 개발 방법론)을 익혀 Spring Framework로 간단한 MVC형태의 게시판을 만들었습니다. 
+  IDE 로는 인텔리제이를 사용하였고 git을 사용하여 협업을 하였습니다.
+* 담 당  업 무 : 로그인 기능과 로그인 실패를 처리하는 로그 기능, 댓글 기능과 댓글의 댓글을 제한하는 기능 등을 담당하였습니다.
+
+
 ## 삼육대학교 컴퓨터학부 프로젝트 경진대회 (팀:흥해도 청춘 망해도 청춘)
 * 프로젝트  명 : [센서를 이용한 애완동물 보호 시스템](https://github.com/yunjeongloper/portfolio/tree/master/HCMC/views)
 * OS   및   DB : Windows 8, Maria DB, Mybatis
