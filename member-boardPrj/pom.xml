@@ -150,7 +150,7 @@
 		<dependency>
 			<groupId>org.mindrot</groupId>
 			<artifactId>jbcrypt</artifactId>
-			<version>0.3m</version>
+			<version>0.4</version>
 		</dependency>
 		<!-- 비밀 번호 암호화 -->
 
